@@ -1,0 +1,4 @@
+nohup: ignoring input
+Accuracy under FGSM(model_name=ResNet, device=cuda:0, attack_mode=default, targeted=False, normalization_used=False, eps=0.03) : 33.44761904761905%
+Accuracy under PGD(model_name=ResNet, device=cuda:0, attack_mode=default, targeted=False, normalization_used=False, eps=0.03, alpha=0.00784313725490196, steps=10, random_start=True) : 0.0%
+Accuracy under BIM(model_name=ResNet, device=cuda:0, attack_mode=default, targeted=False, normalization_used=False, eps=0.03, alpha=0.00784313725490196, steps=10) : 10.780952380952382%

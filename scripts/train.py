@@ -110,36 +110,34 @@ def valid_step(model: torch.nn.Module,
   test_acc = test_acc / len(dataloader)
   return test_loss, test_acc
 
-def test_step(model: torch.nn.Module,
-              dataloader: torch.utils.data.DataLoader,
-              loss_fn: torch.nn.Module):
-  model.eval()
-
-  correct_count, wrong_count, test_loss, test_acc = 0, 0, 0, 0
-  true_labels = []
-  predicted_labels = []
-  logits = []
-  with torch.inference_mode():
-    for batch, (X, y) in enumerate(dataloader):
-      X, y = X.to(device), y.to(device)
-      true_labels.extend(y.tolist())
-
-      y_test_logits = model(X)
-      logits.extend(y_test_logits.tolist())
-      loss = loss_fn(y_test_logits, y)
-      test_loss += loss.item()
-
-      y_pred_class = torch.argmax(y_test_logits, dim=1)
-      predicted_labels.extend(y_pred_class.tolist())
-      
-      correct_count += (y_pred_class == y).sum().item()
-      wrong_count += (y_pred_class != y).sum().item()
+def test_step(model: torch.nn.Module, dataloader: torch.utils.data.DataLoader,loss_fn: torch.nn.Module):
+    model.eval()
         
-      test_acc += (y_pred_class == y).sum().item()/len(y_test_logits)
-        
-  test_loss = test_loss / len(dataloader)
-  test_acc = test_acc / len(dataloader)
-  return correct_count, wrong_count, logits, predicted_labels, true_labels, test_loss, test_acc
+    correct_count, wrong_count, test_loss, test_acc = 0, 0, 0, 0
+    true_labels = []
+    predicted_labels = []
+    logits = []
+    with torch.inference_mode():
+        for batch, (X, y) in enumerate(dataloader):
+            X, y = X.to(device), y.to(device)
+            true_labels.extend(y.tolist())
+
+            y_test_logits = model(X)
+            logits.extend(y_test_logits.tolist())
+            loss = loss_fn(y_test_logits, y)
+            test_loss += loss.item()
+
+            y_pred_class = torch.argmax(y_test_logits, dim=1)
+            predicted_labels.extend(y_pred_class.tolist())
+            
+            correct_count += (y_pred_class == y).sum().item()
+            wrong_count += (y_pred_class != y).sum().item()
+                
+            test_acc += (y_pred_class == y).sum().item()/len(y_test_logits)
+            
+    test_loss = test_loss / len(dataloader)
+    test_acc = test_acc / len(dataloader)
+    return correct_count, wrong_count, logits, predicted_labels, true_labels, test_loss, test_acc
 
 def train_loop(model: torch.nn.Module,
                train_dataloader: torch.utils.data.DataLoader,
