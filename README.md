@@ -10,10 +10,7 @@ To counter these threats, we employ adversarial training, a defense mechanism th
 Our research contributes to the growing body of work on adversarial robustness in deep learning, providing insights into developing more secure and reliable machine learning models for applications in ecological research and conservation.
 
 #### Dataset
-The dataset used in this project consists of 84,635 training images across 525 bird species. <br> Dataset link - [100 Bird Species](https://www.kaggle.com/datasets/gpiosenka/100-bird-species)
-
-#### Dataset
-The dataset used in this project consists of 84,635 training images across 525 bird species. <br> Dataset link - [100 Bird Species](https://www.kaggle.com/datasets/gpiosenka/100-bird-species)
+The dataset used in this project consists of 84,635 training images across 525 bird species. <br> Dataset link - https://www.kaggle.com/datasets/gpiosenka/100-bird-species
 
 <p align="left">
   <img src="https://github.com/shubhu163/BirdClass_Robustness/assets/71623089/f0fd258e-5822-4227-aded-9f1d45534037" width="300" alt="Bird Species Sample 1">
